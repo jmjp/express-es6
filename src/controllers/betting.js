@@ -7,7 +7,7 @@ async function reducePoints(req,res){
     var betting  = req.body.event.data.new;
     var points  = await playerService.FindUserPointsById(betting.user);
     var calc = points.data.main_users[0].points - betting.amout;
-    await playerService.UpdateUserPoints(betting.user,);
+    await playerService.UpdateUserPoints(betting.user,calc);
     return res.json({message: "success",user: points.data.main_users[0], currentPoints: calc});
 }
 
@@ -19,7 +19,6 @@ async function createBetting(req,res){
         return res.status(400).json({message: "no roulette avaible"});
     }
     var points = await playerService.FindUserPointsById(currentUser);
-    console.log(points);
     if(points.data.main_users[0].points < bettingContent.amount){
         return res.status(400).json({message: "you don't have points"});
     }
