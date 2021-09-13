@@ -1,3 +1,4 @@
+import axios from 'axios';
 const createBetting = `
 mutation CreateBetting($amout: float8, $user: Int, $selected: games_betting_selected_enum, $game: Int,$multi: Int) {
     insert_games_betting(objects: {amout: $amout, user: $user, selected: $selected, game_id: $game, payout_multiplier: $multi}) {
