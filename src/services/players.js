@@ -14,7 +14,7 @@ const execute = async (variables, query) => {
   return { data: response.data };
 };
 
-const findUserPointsById = `query FindUserById ($id: int) {
+const findUserPointsById = `query FindUserById ($id: Int) {
   main_users(where: {id: {_eq: $id}}){
     points
   }
