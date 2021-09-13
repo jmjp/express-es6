@@ -55,6 +55,11 @@ const login = async (req,res) => {
     if((await argon.verify(user.password,password)) == false){
         return res.status(400).json({message: "invalid password"});
     }
+    user = {
+        "user": user.username,
+        "email": user.email,
+        "points": user.points
+    }
     var token = await generateToken(user);
     return res.json({message: "user authenticate with success",user: user,token: token});
 
