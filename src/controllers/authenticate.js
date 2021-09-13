@@ -41,7 +41,6 @@ const register = async (req,res) => {
 
 const login = async (req,res) => {
     var {identifier, password } = req.body.input;
-    console.log(identifier);
     if(identifier == undefined){
         return res.status(400).json({message: "invalid identifier"});
     }
@@ -49,6 +48,7 @@ const login = async (req,res) => {
         return res.status(400).json({message: "password needs minimum 6 characters"});
     }
     var response = await authService.findUserByEmailAndUsername(identifier,identifier);
+    console.log(response);
     if(response.data.main_users.length == 0){
         return res.status(400).json({message: `no user with username equals to ${identifier}`});
     }
