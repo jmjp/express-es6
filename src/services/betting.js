@@ -27,7 +27,7 @@ const execute = async (variables, query) => {
     return { data: response.data };
 };
 
-export const CreateBetting = async (amount,user,selected,game,multi) => {
-    var { data } = await execute({ amount,user,selected,game,multi }, createBetting);
+export const CreateBetting = async (amout,user,selected,game,multi) => {
+    var { data } = await execute({ amout,user,selected,game,multi }, createBetting);
     return data;
 }
