@@ -74,11 +74,7 @@ async function generateToken (user) {
         "https://hasura.io/jwt/claims": {
           "x-hasura-allowed-roles": ["user"],
           "x-hasura-user-id": user.id.toString(),
-          "x-hasura-user-custom": {
-            "username": user.username,
-            "email": user.email,
-            "points": user.points
-          },
+          "x-hasura-user-username": user.username,
           "x-hasura-default-role": "user",
           "x-hasura-role": "user"
         },
