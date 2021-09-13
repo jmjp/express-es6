@@ -27,7 +27,7 @@ async function createBetting(req,res){
         game_id: roulette.data.games_roulette[0].id,
         user: currentUser,
         selected: bettingContent.selected,
-        payout_multiplier: bettingContent.selected == 'Green' ? 14 : 2
+        payout_multiplier: bettingContent.selected == 'green' ? 14 : 2
     }
     var createdBetting = await bettingService.CreateBetting(betting.amout,betting.user, betting.selected, betting.game_id, betting.payout_multiplier);
     console.log(createdBetting);
