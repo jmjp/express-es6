@@ -59,6 +59,15 @@ const findLastFinishedRoulette = `query LastRoulette {
 }
 `;
 
+const findLastAvaibleRoulette = `query MyQuery {
+  games_roulette(where: {stats: {_eq: STARTED}}, order_by: {created_at: desc}) {
+    id
+    roll
+    stats
+  }
+}
+`;
+
 
 const execute = async (variables, query) => {
   console.log(query);
@@ -91,6 +100,10 @@ const execute = async (variables, query) => {
       var {data} = await execute({id: id, status: 'FINISHED', roll: pickedNumber}, updateLastRoulette);
       return data;
   }
+  export const FindAvaibleRoulette = async () => {
+    var {data} = await execute({},findLastRoulette);
+    return data;
+}
 
   export const FindLastFinishedRoulette = async () => {
     var {data} = await execute({},findLastFinishedRoulette);
