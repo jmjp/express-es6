@@ -40,8 +40,8 @@ const register = async (req,res) => {
 }
 
 const login = async (req,res) => {
-    console.log(req.body.input);
-    var {identifier, password } = req.body.input;
+    var {identifier, password } = JSON.stringify(req.body.input);
+    console.log(identifier);
     if(identifier == undefined){
         return res.status(400).json({message: "invalid identifier"});
     }
