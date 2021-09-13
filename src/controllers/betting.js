@@ -1,16 +1,24 @@
 import * as playerService from '../services/players';
 
 
-async function checkPost(req,res){
+async function reducePoints(req,res){
     var betting  = req.body.event.data.new;
-    console.log(betting);
-    console.log(betting.user);
     var points  = await playerService.FindUserPointsById(betting.user);
-    console.log(points);
-    await playerService.UpdateUserPoints(betting.user,(points.data.main_users[0].points - betting.amout));
-    return res.json({message: "success"});
+    var calc = points.data.main_users[0].points - betting.amout;
+    await playerService.UpdateUserPoints(betting.user,);
+    return res.json({message: "success",user: points.data.main_users[0], currentPoints: calc});
+}
+
+async function createBetting(req,res){
+    console.log(JSON.stringify(req.body));
+    return res.json({
+        amout: 5,
+        game_id: 1,
+        id: 1,
+    })
 }
 
 export{
-    checkPost
+    reducePoints,
+    createBetting
 }
