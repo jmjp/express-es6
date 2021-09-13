@@ -11,7 +11,7 @@ export async function startRoulette(req,res,next){
     await sleep(2000);
     const id = created.data.insert_games_roulette_one.id;
     await rouletteService.UpdateLastRoulette(id,"STARTED");
-    await sleep(10000);
+    await sleep(12000);
     var randomNumber = Math.floor(Math.random() * 12);
     var finish = await rouletteService.FinishRoulette(id,randomNumber);
     return res.json(finish);
