@@ -14,6 +14,13 @@ const execute = async (variables, query) => {
   return { data: response.data };
 };
 
+const findUserPointsById = `query FindUserById ($id: int) {
+  main_users(where: {id: {_eq: $id}}){
+    points
+  }
+}
+`;
+
 const updatePoints = `
 mutation UpdatePoints($id: Int,$points: float8) {
     update_main_users(where: {id: {_eq: $id}}, _set: {points: $points}) {
@@ -27,5 +34,10 @@ mutation UpdatePoints($id: Int,$points: float8) {
 
 export const UpdateUserPoints = async (id, points) => {
   var { data } = await execute({ id, points }, updatePoints);
+  return data;
+}
+
+export const FindUserPointsById = async (id) => {
+  var {data} = await execute({id},findUserPointsById);
   return data;
 }
