@@ -3,7 +3,7 @@ import * as argon from 'argon2';
 import jwt from 'jsonwebtoken';
 
 const register = async (req,res) => {
-    var {username, email, password, } = req.body;
+    var {username, email, password, } = req.body.input;
     if(username == undefined || email == undefined || password == undefined){
         return res.status(409).json({message: "error to find username, email or password field"});
     }
