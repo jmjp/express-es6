@@ -4,7 +4,12 @@ const execute = async (variables, query) => {
     const response = await axios.post("https://versus-betting.herokuapp.com/v1/graphql", {
         query: query,
         variables
-    })
+    },
+    {
+        headers:{
+          "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET
+        }
+      })
     return { data: response.data };
 };
 

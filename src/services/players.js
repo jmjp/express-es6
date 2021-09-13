@@ -1,11 +1,17 @@
 import axios from 'axios';
 
 const execute = async (variables, query) => {
-    const response = await axios.post("https://versus-betting.herokuapp.com/v1/graphql",{
-        query: query,
-        variables
-      })
-    return {data: response.data};
+  const response = await axios.post("https://versus-betting.herokuapp.com/v1/graphql", {
+    query: query,
+    variables
+  },
+  {
+    headers:{
+      "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET
+    }
+  }
+  )
+  return { data: response.data };
 };
 
 const updatePoints = `
@@ -19,7 +25,7 @@ mutation UpdatePoints($id: Int,$points: float8) {
     }
   }`;
 
-export const UpdateUserPoints = async (id,points) => {
-    var {data} = await execute({id,points},updatePoints);
-    return data;
+export const UpdateUserPoints = async (id, points) => {
+  var { data } = await execute({ id, points }, updatePoints);
+  return data;
 }
