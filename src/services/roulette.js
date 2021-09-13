@@ -101,7 +101,7 @@ const execute = async (variables, query) => {
       return data;
   }
   export const FindAvaibleRoulette = async () => {
-    var {data} = await execute({},findLastRoulette);
+    var {data} = await execute({},findLastAvaibleRoulette);
     return data;
 }
 
@@ -109,4 +109,6 @@ const execute = async (variables, query) => {
     var {data} = await execute({},findLastFinishedRoulette);
     return data;
   }
+
+
 
