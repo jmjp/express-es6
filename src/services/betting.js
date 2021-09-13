@@ -24,6 +24,7 @@ const execute = async (variables, query) => {
           "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET
         }
       })
+    console.log(JSON.stringify(response.data));
     return { data: response.data };
 };
 
