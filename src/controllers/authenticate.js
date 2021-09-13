@@ -75,6 +75,8 @@ async function generateToken (user) {
           "x-hasura-allowed-roles": ["user"],
           "x-hasura-user-id": user.id.toString(),
           "x-hasura-user-username": user.username,
+          "x-hasura-user-email": user.email,
+          "x-hasura-user-points": user.points,
           "x-hasura-default-role": "user",
           "x-hasura-role": "user"
         },
