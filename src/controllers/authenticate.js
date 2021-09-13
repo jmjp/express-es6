@@ -48,7 +48,6 @@ const login = async (req,res) => {
         return res.status(400).json({message: "password needs minimum 6 characters"});
     }
     var response = await authService.findUserByEmailAndUsername(identifier,identifier);
-    console.log(response);
     if(response.data.main_users.length == 0){
         return res.status(400).json({message: `no user with username equals to ${identifier}`});
     }
@@ -63,7 +62,7 @@ const login = async (req,res) => {
         "points": user.points
     }
     var token = await generateToken(user);
-    return res.json({message: "user authenticate with success",user: user,token: token});
+    return res.json({message: "user authenticate with success",user: user, token: token});
 
 }
 
@@ -71,7 +70,7 @@ async function generateToken (user) {
     const tokenContents = {
         sub: user.id.toString(),
         iat: Date.now() / 1000,
-        iss: 'https://spaces-cloud.herokuapp.com/',
+        iss: 'https://versus-betting.herokuapp.com/',
         "https://hasura.io/jwt/claims": {
           "x-hasura-allowed-roles": "user",
           "x-hasura-user-id": user.id.toString(),
