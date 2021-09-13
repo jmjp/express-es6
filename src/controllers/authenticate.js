@@ -72,7 +72,7 @@ async function generateToken (user) {
         iat: Date.now() / 1000,
         iss: 'https://versus-betting.herokuapp.com/',
         "https://hasura.io/jwt/claims": {
-          "x-hasura-allowed-roles": "user",
+          "x-hasura-allowed-roles": ["user"],
           "x-hasura-user-id": user.id.toString(),
           "x-hasura-user-user": {
             "username": user.username,
