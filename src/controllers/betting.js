@@ -25,7 +25,7 @@ async function createBetting(req,res){
     }
     var betting = {
         amout: bettingContent.amount,
-        game_id: roulette.data.games_roulette[0],
+        game_id: roulette.data.games_roulette[0].id,
         user: currentUser,
         selected: bettingContent.selected,
         payout_multiplier: bettingContent.selected == 'Green' ? 14 : 2
