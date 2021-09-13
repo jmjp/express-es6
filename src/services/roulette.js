@@ -70,7 +70,6 @@ const findLastAvaibleRoulette = `query MyQuery {
 
 
 const execute = async (variables, query) => {
-  console.log(query);
     const response = await axios.post("https://versus-betting.herokuapp.com/v1/graphql",{
         query: query,
         variables
