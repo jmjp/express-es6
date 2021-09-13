@@ -57,6 +57,7 @@ const login = async (req,res) => {
         return res.status(400).json({message: "invalid password"});
     }
     user = {
+        "id": user.id,
         "user": user.username,
         "email": user.email,
         "points": user.points
