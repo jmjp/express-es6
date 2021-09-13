@@ -11,7 +11,7 @@ async function reducePoints(req,res){
 
 async function createBetting(req,res){
     console.log(JSON.stringify(req.body));
-    const currentUser = req.body.session_variables.x-hasura-user-id;
+    const currentUser = req.body.session_variables["x-hasura-user-id"];
     console.log(currentUser);
     return res.json({
         amout: 5,
