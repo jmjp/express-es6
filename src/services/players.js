@@ -21,6 +21,7 @@ const findUserPointsById = `query FindUserById ($id: Int) {
 }
 `;
 
+
 const updatePoints = `
 mutation UpdatePoints($id: Int,$points: float8) {
     update_main_users(where: {id: {_eq: $id}}, _set: {points: $points}) {
